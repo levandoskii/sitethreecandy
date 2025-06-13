@@ -30,27 +30,32 @@
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault();
 
-      const usuario = {
-        nome: document.getElementById('nome').value,
-        sobrenome: document.getElementById('sobrenome').value,
-        turma: document.getElementById('turma').value,
-        tipoEntrega: document.getElementById('tipoEntrega').value
-      };
-
+      const nome = document.getElementById('nome').value.trim();
+      const sobrenome = document.getElementById('sobrenome').value.trim();
+      const turma = document.getElementById('turma').value.trim();
+      const tipoEntrega = document.getElementById('tipoEntrega').value;
       const manterLogado = document.getElementById('manterLogado').checked;
 
+      const dados = {
+        nome,
+        sobrenome,
+        turma,
+        tipoEntrega
+      };
+
       if (manterLogado) {
-        localStorage.setItem('usuario', JSON.stringify(usuario));
+        localStorage.setItem('usuarioThreeCandy', JSON.stringify(dados));
       } else {
-        sessionStorage.setItem('usuario', JSON.stringify(usuario));
+        sessionStorage.setItem('usuarioThreeCandy', JSON.stringify(dados));
       }
 
-      // Redirecionar para home.html
-      window.location.href = "home.html";
+      // ✅ Redirecionamento garantido
+      window.location.assign("home.html");
     });
   </script>
 </body>
 </html>
+
