@@ -3,27 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three Candy - Login</title>
+  <title>Login - Three Candy</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="login-body">
-  <div class="login-container">
-    <h1 class="title">Three Candy</h1>
-    <form id="login-form">
+<body>
+  <div class="container">
+    <h1>Three Candy</h1>
+    <p style="margin-bottom: 20px;">Faça seu login para adoçar o dia 🍬</p>
+
+    <form id="loginForm">
       <input type="text" id="nome" placeholder="Nome" required>
       <input type="text" id="sobrenome" placeholder="Sobrenome" required>
-      <input type="text" id="turma" placeholder="Turma" required>
+      <input type="text" id="turma" placeholder="Turma (ex: 2A)" required>
+
       <select id="entrega" required>
         <option value="">Tipo de entrega</option>
         <option value="Encomenda">Encomenda</option>
         <option value="Entrega no dia">Entrega no dia</option>
       </select>
-      <label class="checkbox-label">
-        <input type="checkbox" id="manter-login"> Manter login
+
+      <label>
+        <input type="checkbox" id="manterLogado">
+        Manter conectado
       </label>
-      <button type="submit" class="botao">Entrar</button>
+
+      <button type="submit">Entrar</button>
     </form>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const dadosUsuario = {
+        nome: document.getElementById("nome").value,
+        sobrenome: document.getElementById("sobrenome").value,
+        turma: document.getElementById("turma").value,
+        entrega: document.getElementById("entrega").value
+      };
+
+      const manter = document.getElementById("manterLogado").checked;
+
+      if (manter) {
+        localStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
+      } else {
+        sessionStorage.setItem("dadosUsuario", JSON.stringify(dadosUsuario));
+      }
+
+      window.location.href = "home.html";
+    });
+  </script>
 </body>
 </html>
