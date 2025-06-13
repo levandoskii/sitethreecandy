@@ -24,30 +24,11 @@
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nome = document.getElementById("nome").value;
-      const sobrenome = document.getElementById("sobrenome").value;
-      const turma = document.getElementById("turma").value;
-      const tipoEntrega = document.getElementById("tipoEntrega").value;
-      const manterLogado = document.getElementById("manterLogado").checked;
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
 
-      const dados = {
-        nome,
-        sobrenome,
-        turma,
-        tipoEntrega
-      };
-
-      if (manterLogado) {
-        localStorage.setItem("userData", JSON.stringify(dados));
-      } else {
-        sessionStorage.setItem("userData", JSON.stringify(dados));
-      }
-
-      window.location.href = "home.html";
-    });
-  </script>
-</body>
-</html>
-
+      const nome = document.getElementById('nome').value;
+      const sobrenome = document.getElementById('sobrenome').value;
+      const turma = document.getElementById('turma').value;
+      const tipoEntrega = document.getElementById('tipoEntrega').value;
+      const manterLogado = document.getElementById('manterLogado').ch
