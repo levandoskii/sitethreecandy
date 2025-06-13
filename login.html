@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Three Candy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1 class="title">Three Candy</h1>
+    <form id="login-form">
+      <input type="text" id="nome" placeholder="Nome" required />
+      <input type="text" id="sobrenome" placeholder="Sobrenome" required />
+      <input type="text" id="turma" placeholder="Turma" required />
+      <select id="entrega">
+        <option value="Encomenda">Encomenda</option>
+        <option value="Entrega no dia">Entrega no dia</option>
+      </select>
+      <label class="checkbox-label">
+        <input type="checkbox" id="manter-login" />
+        Manter conectado
+      </label>
+      <button type="submit" class="botao">Entrar</button>
+    </form>
+  </div>
+</body>
+</html>
