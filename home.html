@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Início - Three Candy</title>
+  <title>Three Candy - Login</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <img src="Imagem do WhatsApp de 2025-06-12 à(s) 17.20.43_e30e9f09.jpg" alt="Logo Three Candy" style="width: 150px; border-radius: 20px; margin-bottom: 20px;">
-    <h1>Three Candy</h1>
-    <h2>Três vezes mais sabor, carinho e alegria</h2>
-
-    <button onclick="irParaCatalogo()">Ver Catálogo</button>
-
-    <div id="mensagem-bemvindo">
-      <p>Seja bem-vindo ao nosso cantinho que mais adoça vidas! Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você. Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!</p>
-    </div>
-
-    <div class="icones">
-      <div class="icone-bloco">
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Ícone pessoa">
-        <p>Acesse seus pedidos com facilidade!</p>
-      </div>
-      <div class="icone-bloco">
-        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Ícone pedido">
-        <p>Faça seu pedido e saboreie doces incríveis!</p>
-      </div>
-      <div class="icone-bloco">
-        <img src="https://cdn-icons-png.flaticon.com/512/685/685352.png" alt="Ícone cupcake">
-        <p>Sabores que encantam cada mordida!</p>
-      </div>
-    </div>
+  <div class="login-container">
+    <h1 class="title">Three Candy</h1>
+    <p class="subtitle">Três vezes mais sabor, carinho e alegria</p>
+    <form id="loginForm">
+      <input type="text" placeholder="Nome" id="nome" required>
+      <input type="text" placeholder="Sobrenome" id="sobrenome" required>
+      <input type="text" placeholder="Turma" id="turma" required>
+      <select id="tipoEntrega">
+        <option value="encomenda">Encomenda</option>
+        <option value="hoje">Entrega no dia</option>
+      </select>
+      <label><input type="checkbox" id="manterLogado"> Manter conectado</label>
+      <button type="submit" class="login-btn">Entrar</button>
+    </form>
   </div>
 
   <script>
-    function irParaCatalogo() {
-      window.location.href = "catalogo.html";
-    }
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const sobrenome = document.getElementById("sobrenome").value;
+      const turma = document.getElementById("turma").value;
+      const tipoEntrega = document.getElementById("tipoEntrega").value;
+      const manterLogado = document.getElementById("manterLogado").checked;
 
-    // Validação para garantir que o usuário está logado
-    const dados = localStorage.getItem("dadosUsuario") || sessionStorage.getItem("dadosUsua
+      const dados = {
+        nome,
+        sobrenome,
+        turma,
+        tipoEntrega
+      };
+
+      if (manterLogado) {
+        localStorage.setItem("userData", JSON.stringify(dados));
+      } else {
+        sessionStorage.setItem("userData", JSON.stringify(dados));
+      }
+
+      window.location.href = "home.html";
+    });
+  </script>
+</body>
+</html>
