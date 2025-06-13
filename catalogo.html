@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo - Three Candy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="catalogo-body">
+  <header>
+    <h1>Catálogo</h1>
+    <button class="botao-carrinho" onclick="abrirCarrinho()">🛒 Carrinho</button>
+  </header>
+  <main class="produtos">
+    <div class="produto" data-nome="Bala Halls" data-preco="3.50">
+      <h3>Halls - R$ 3,50</h3>
+      <div class="quantidade">
+        <button onclick="alterarQuantidade(this, -1)">-</button>
+        <span>0</span>
+        <button onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button onclick="adicionarCarrinho(this)">Adicionar</button>
+    </div>
+
+    <div class="produto" data-nome="Trident" data-preco="4.50">
+      <h3>Trident - R$ 4,50</h3>
+      <div class="quantidade">
+        <button onclick="alterarQuantidade(this, -1)">-</button>
+        <span>0</span>
+        <button onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button onclick="adicionarCarrinho(this)">Adicionar</button>
+    </div>
+
+    <div class="produto" data-nome="Palha Italiana" data-preco="7.00">
+      <h3>Palha Italiana - R$ 7,00</h3>
+      <div class="quantidade">
+        <button onclick="alterarQuantidade(this, -1)">-</button>
+        <span>0</span>
+        <button onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button onclick="adicionarCarrinho(this)">Adicionar</button>
+    </div>
+  </main>
+
+  <div id="carrinho-modal" class="modal">
+    <div class="modal-conteudo">
+      <h2>Seu carrinho</h2>
+      <ul id="lista-carrinho"></ul>
+      <p id="total"></p>
+      <button onclick="finalizarPedido()">Pagar via WhatsApp</button>
+      <button onclick="fecharCarrinho()">Fechar</button>
+    </div>
+  </div>
+</body>
+</html>
 
