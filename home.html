@@ -1,52 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three Candy - Login</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Three Candy - Início</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="login-container">
+  <div class="home-container">
     <h1 class="title">Three Candy</h1>
-    <p class="subtitle">Três vezes mais sabor, carinho e alegria</p>
-    <form id="loginForm">
-      <input type="text" placeholder="Nome" id="nome" required>
-      <input type="text" placeholder="Sobrenome" id="sobrenome" required>
-      <input type="text" placeholder="Turma" id="turma" required>
-      <select id="tipoEntrega">
-        <option value="encomenda">Encomenda</option>
-        <option value="hoje">Entrega no dia</option>
-      </select>
-      <label><input type="checkbox" id="manterLogado"> Manter conectado</label>
-      <button type="submit" class="login-btn">Entrar</button>
-    </form>
+    <img src="images/logo.png" alt="Logo Three Candy" class="logo" />
+    <h2 class="slogan">Três vezes mais sabor, carinho e alegria</h2>
+    <button onclick="irParaCatalogo()" class="catalogo-btn">Ir para o Catálogo</button>
+
+    <p class="mensagem-boas-vindas">
+      Seja bem-vindo ao nosso cantinho que mais adoça vidas! Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você. Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!
+    </p>
+
+    <div class="icones-info">
+      <div class="info-item">
+        <img src="images/usuario.png" alt="Perfil" />
+        <p>Acesse seus pedidos com facilidade!</p>
+      </div>
+      <div class="info-item">
+        <img src="images/pedido.png" alt="Pedido" />
+        <p>Faça seu pedido e saboreie doces incríveis!</p>
+      </div>
+      <div class="info-item">
+        <img src="images/cupcake.png" alt="Cupcake" />
+        <p>Faça seu pedido e saboreie doces incríveis!</p>
+      </div>
+    </div>
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nome = document.getElementById("nome").value;
-      const sobrenome = document.getElementById("sobrenome").value;
-      const turma = document.getElementById("turma").value;
-      const tipoEntrega = document.getElementById("tipoEntrega").value;
-      const manterLogado = document.getElementById("manterLogado").checked;
+    function irParaCatalogo() {
+      window.location.href = "catalogo.html";
+    }
 
-      const dados = {
-        nome,
-        sobrenome,
-        turma,
-        tipoEntrega
-      };
-
-      if (manterLogado) {
-        localStorage.setItem("userData", JSON.stringify(dados));
-      } else {
-        sessionStorage.setItem("userData", JSON.stringify(dados));
-      }
-
-      window.location.href = "home.html";
-    });
+    // Carregar nome do usuário (opcional, se quiser exibir futuramente)
+    const usuario = JSON.parse(localStorage.getItem('usuario') || sessionStorage.getItem('usuario'));
+    if (!usuario) {
+      window.location.href = "login.html"; // redireciona se não estiver logado
+    }
   </script>
 </body>
 </html>
