@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Three Candy - Início</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="home-body">
-  <div class="home-container">
-    <img src="logo-three-candy.jpg" alt="Logo Three Candy" class="logo" />
-    <h1 class="title">Three Candy</h1>
-    <p class="slogan">Três vezes mais sabor, carinho e alegria</p>
-    <a href="catalogo.html" class="botao">Ir para o catálogo</a>
-    <p class="bem-vindo">
-      Seja bem-vindo ao nosso cantinho que mais adoça vidas!<br/>
-      Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você.<br/>
-      Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!
-    </p>
-    <div class="icones-rodape">
-      <div>
-        <img src="usuario.png" alt="Usuário" />
+<body>
+  <script>
+    const dados = JSON.parse(localStorage.getItem('dadosUsuario') || sessionStorage.getItem('dadosUsuario'));
+    if (!dados) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div class="container">
+    <img src="Imagem%20do%20WhatsApp%20de%202025-06-12%20%C3%A0(s)%2017.20.43_e30e9f09.jpg" alt="Logo Three Candy" style="width: 150px; border-radius: 20px;">
+    <h1>Three Candy</h1>
+    <h2>Três vezes mais sabor, carinho e alegria</h2>
+
+    <a href="catalogo.html">
+      <button class="botao">Ir para o Catálogo</button>
+    </a>
+
+    <div id="mensagem-bemvindo">
+      <p>
+        Seja bem-vindo ao nosso cantinho que mais adoça vidas! Aqui, cada detalhe é feito com carinho:
+        dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você. Venha viver momentos
+        especiais e adoçar o seu dia com a gente — será um prazer te receber!
+      </p>
+    </div>
+
+    <div class="icones">
+      <div class="icone-bloco">
+        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Pessoa">
         <p>Acesse seus pedidos com facilidade!</p>
       </div>
-      <div>
-        <img src="pedido.png" alt="Pedido" />
+      <div class="icone-bloco">
+        <img src="https://cdn-icons-png.flaticon.com/512/126/126083.png" alt="Pedido">
         <p>Faça seu pedido e saboreie doces incríveis!</p>
       </div>
-      <div>
-        <img src="cupcake.png" alt="Cupcake" />
-        <p>Faça seu pedido e saboreie doces incríveis!</p>
+      <div class="icone-bloco">
+        <img src="https://cdn-icons-png.flaticon.com/512/685/685352.png" alt="Cupcake">
+        <p>Delícias preparadas com carinho!</p>
       </div>
     </div>
   </div>
+
 </body>
 </html>
