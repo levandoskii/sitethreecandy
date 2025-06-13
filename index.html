@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Candy - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Tela de Login -->
+  <div class="login-container" id="loginPage">
+    <h1 class="title">Three Candy</h1>
+    <p class="subtitle">Três vezes mais sabor, carinho e alegria</p>
+    <form id="loginForm">
+      <input type="text" placeholder="Nome" id="nome" required>
+      <input type="text" placeholder="Sobrenome" id="sobrenome" required>
+      <input type="text" placeholder="Turma" id="turma" required>
+      <select id="tipoEntrega">
+        <option value="encomenda">Encomenda</option>
+        <option value="hoje">Entrega no dia</option>
+      </select>
+      <label><input type="checkbox" id="manterLogado"> Manter conectado</label>
+      <button type="submit" class="login-btn">Entrar</button>
+    </form>
+  </div>
+
+  <!-- Página Inicial -->
+  <div class="home-container hidden" id="homePage">
+    <h1 class="title">Three Candy</h1>
+    <img src="logo.png" alt="Logo Three Candy" class="logo">
+    <h2 class="slogan">Três vezes mais sabor, carinho e alegria</h2>
+    <button onclick="irParaCatalogo()" class="catalogo-btn">Ir para o Catálogo</button>
+    <p class="mensagem-boas-vindas">
+      Seja bem-vindo ao nosso cantinho que mais adoça vidas! Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você. Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!
+    </p>
+    <div class="icones-info">
+      <div class="info-item">
+        <img src="usuario.png" alt="Perfil">
+        <p>Acesse seus pedidos com facilidade!</p>
+      </div>
+      <div class="info-item">
+        <img src="pedido.png" alt="Pedido">
+        <p>Faça seu pedido e saboreie doces incríveis!</p>
+      </div>
+      <div class="info-item">
+        <img src="cupcake.png" alt="Cupcake">
+        <p>Faça seu pedido e saboreie doces incríveis!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Catálogo -->
+  <div class="catalogo-container hidden" id="catalogoPage">
+    <h1 class="title">Catálogo</h1>
+    <div class="produtos">
+      <div class="produto">
+        <p>Halls - R$ 3,50</p>
+        <button onclick="alterarQuantidade('halls', -1)">-</button>
+        <span id="qtd-halls">0</span>
+        <button onclick="alterarQuantidade('halls', 1)">+</button>
+        <button onclick="adicionarAoCarrinho('Halls', 3.5, 'qtd-halls')">Adicionar</button>
+      </div>
+      <div class="produto">
+        <p>Trident - R$ 4,50</p>
+        <button onclick="alterarQuantidade('trident', -1)">-</button>
+        <span id="qtd-trident">0</span>
+        <button onclick="alterarQuantidade('trident', 1)">+</button>
+        <button onclick="adicionarAoCarrinho('Trident', 4.5, 'qtd-trident')">Adicionar</button>
+      </div>
+      <div class="produto">
+        <p>Palha Italiana - R$ 7,00</p>
+        <button onclick="alterarQuantidade('palha', -1)">-</button>
+        <span id="qtd-palha">0</span>
+        <button onclick="alterarQuantidade('palha', 1)">+</button>
+        <button onclick="adicionarAoCarrinho('Palha Italiana', 7.0, 'qtd-palha')">Adicionar</button>
+      </div>
+    </div>
+    <div class="carrinho" id="carrinho">
+      <h2>Carrinho</h2>
+      <ul id="itensCarrinho"></ul>
+      <p id="precoTotal">Total: R$ 0,00</p>
+      <button onclick="finalizarCompra()">Pagar via WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
