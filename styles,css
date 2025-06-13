@@ -1,1 +1,117 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #add8e6);
+  color: #333;
+}
+
+.hidden {
+  display: none;
+}
+
+.login-container, .home-container, .catalogo-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ff69b4;
+}
+
+.subtitle, .slogan {
+  font-size: 1.2rem;
+  color: #007BFF;
+  margin-bottom: 20px;
+}
+
+form input, form select {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.login-btn, .catalogo-btn, .produto button, .carrinho button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.login-btn:hover, .catalogo-btn:hover, .produto button:hover, .carrinho button:hover {
+  background: #0056b3;
+}
+
+.logo {
+  width: 120px;
+  margin: 20px 0;
+}
+
+.mensagem-boas-vindas {
+  margin: 30px 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.icones-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.info-item {
+  text-align: center;
+  width: 30%;
+}
+
+.info-item img {
+  width: 50px;
+}
+
+.produtos {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.produto {
+  background: #fff0f5;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.produto span {
+  display: inline-block;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.carrinho {
+  margin-top: 30px;
+  background: #f0f8ff;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+#itensCarrinho {
+  list-style: none;
+  padding: 0;
+}
+
+#itensCarrinho li {
+  margin: 5px 0;
+}
 
