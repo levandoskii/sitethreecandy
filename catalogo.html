@@ -7,64 +7,125 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>Catálogo Three Candy</h1>
+
+    <div class="produtos">
+      <div class="produto" data-produto="Bala Halls" data-preco="3.50">
+        <h3>Bala Halls</h3>
+        <p>R$ 3,50</p>
+        <button onclick="alterarQtd(this, -1)">-</button>
+        <span class="qtd">0</span>
+        <button onclick="alterarQtd(this, 1)">+</button><br>
+        <button onclick="adicionarAoCarrinho(this)">Adicionar</button>
+      </div>
+
+      <div class="produto" data-produto="Trident" data-preco="4.50">
+        <h3>Trident</h3>
+        <p>R$ 4,50</p>
+        <button onclick="alterarQtd(this, -1)">-</button>
+        <span class="qtd">0</span>
+        <button onclick="alterarQtd(this, 1)">+</button><br>
+        <button onclick="adicionarAoCarrinho(this)">Adicionar</button>
+      </div>
+
+      <div class="produto" data-produto="Palha Italiana" data-preco="7.00">
+        <h3>Palha Italiana</h3>
+        <p>R$ 7,00</p>
+        <button onclick="alterarQtd(this, -1)">-</button>
+        <span class="qtd">0</span>
+        <button onclick="alterarQtd(this, 1)">+</button><br>
+        <button onclick="adicionarAoCarrinho(this)">Adicionar</button>
+      </div>
+    </div>
+
+    <!-- Carrinho flutuante -->
+    <button onclick="abrirCarrinho()" style="position: fixed; top: 20px; right: 20px;">🛒 Carrinho</button>
+
+    <!-- Modal Carrinho -->
+    <div class="modal" id="modalCarrinho">
+      <div class="modal-conteudo">
+        <h2>Seu Carrinho</h2>
+        <ul id="lista-carrinho"></ul>
+        <p id="total">Total: R$ 0.00</p>
+        <button onclick="enviarWhatsApp()">Pagar via WhatsApp</button>
+        <button onclick="fecharCarrinho()">Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const dados = JSON.parse(localStorage.getItem('dadosUsuario') || sessionStorage.getItem('dadosUsuario'));
+    const carrinho = [];
+
+    function alterarQtd(btn, valor) {
+      const span = btn.parentElement.querySelector(".qtd");
+      let qtd = parseInt(span.textContent) + valor;
+      if (qtd < 0) qtd = 0;
+      span.textContent = qtd;
+    }
+
+    function adicionarAoCarrinho(btn) {
+      const produtoDiv = btn.closest(".produto");
+      const nome = produtoDiv.dataset.produto;
+      const preco = parseFloat(produtoDiv.dataset.preco);
+      const qtd = parseInt(produtoDiv.querySelector(".qtd").textContent);
+      if (qtd > 0) {
+        const existente = carrinho.find(p => p.nome === nome);
+        if (existente) {
+          existente.qtd += qtd;
+        } else {
+          carrinho.push({ nome, qtd, preco });
+        }
+        produtoDiv.querySelector(".qtd").textContent = 0;
+        alert("Produto adicionado ao carrinho!");
+      }
+    }
+
+    function abrirCarrinho() {
+      const lista = document.getElementById("lista-carrinho");
+      lista.innerHTML = "";
+      let total = 0;
+
+      carrinho.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nome}: ${item.qtd} unidade(s) - R$ ${(item.qtd * item.preco).toFixed(2)}`;
+        lista.appendChild(li);
+        total += item.qtd * item.preco;
+      });
+
+      document.getElementById("total").textContent = `Total: R$ ${total.toFixed(2)}`;
+      document.getElementById("modalCarrinho").style.display = "flex";
+    }
+
+    function fecharCarrinho() {
+      document.getElementById("modalCarrinho").style.display = "none";
+    }
+
+    function enviarWhatsApp() {
+      const dados = JSON.parse(localStorage.getItem("dadosUsuario") || sessionStorage.getItem("dadosUsuario"));
+      if (!dados) {
+        alert("Você precisa estar logado!");
+        return;
+      }
+
+      let mensagem = `Olá, tenho um pedido:\n`;
+      carrinho.forEach(item => {
+        mensagem += `- ${item.nome}: ${item.qtd} unidade(s)\n`;
+      });
+
+      const total = carrinho.reduce((soma, item) => soma + (item.qtd * item.preco), 0);
+      mensagem += `Total: R$ ${total.toFixed(2)}\n`;
+      mensagem += `Nome: ${dados.nome} ${dados.sobrenome}\nTurma: ${dados.turma}\nTipo de entrega: ${dados.entrega}`;
+
+      const url = `https://wa.me/5541996597922?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, "_blank");
+    }
+
+    // Bloqueio de acesso direto sem login
+    const dados = localStorage.getItem("dadosUsuario") || sessionStorage.getItem("dadosUsuario");
     if (!dados) {
       window.location.href = "login.html";
     }
   </script>
-
-  <div class="container">
-    <h1>Catálogo - Three Candy</h1>
-
-    <div class="produtos">
-      <div class="produto">
-        <h3>Bala Halls</h3>
-        <p>R$ 3,50</p>
-        <button onclick="remover(0)">-</button>
-        <span id="quantidade-0">0</span>
-        <button onclick="adicionar(0)">+</button><br/>
-        <button class="botao" onclick="abrirCarrinho()">Adicionar</button>
-      </div>
-
-      <div class="produto">
-        <h3>Trident</h3>
-        <p>R$ 4,50</p>
-        <button onclick="remover(1)">-</button>
-        <span id="quantidade-1">0</span>
-        <button onclick="adicionar(1)">+</button><br/>
-        <button class="botao" onclick="abrirCarrinho()">Adicionar</button>
-      </div>
-
-      <div class="produto">
-        <h3>Palha Italiana</h3>
-        <p>R$ 7,00</p>
-        <button onclick="remover(2)">-</button>
-        <span id="quantidade-2">0</span>
-        <button onclick="adicionar(2)">+</button><br/>
-        <button class="botao" onclick="abrirCarrinho()">Adicionar</button>
-      </div>
-    </div>
-
-    <!-- Ícone do carrinho -->
-    <div style="position: fixed; top: 20px; right: 20px;">
-      <button onclick="abrirCarrinho()">🛒 Carrinho</button>
-    </div>
-  </div>
-
-  <!-- Modal do carrinho -->
-  <div class="modal" id="carrinho-modal">
-    <div class="modal-conteudo">
-      <h3>Seu Carrinho</h3>
-      <ul id="lista-carrinho"></ul>
-      <p id="total">Total: R$ 0,00</p>
-      <button onclick="finalizarPedido()">Pagar via WhatsApp</button>
-      <br/><br/>
-      <button onclick="fecharCarrinho()">Fechar</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
-
