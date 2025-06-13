@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three Candy - Início</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo - Three Candy</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="home-body">
-  <div class="home-container">
-    <img src="logo.jpg" alt="Three Candy Logo" class="logo">
-    <h1 class="title">Three Candy</h1>
-    <p class="slogan">Três vezes mais sabor, carinho e alegria</p>
-    <button onclick="location.href='catalogo.html'" class="botao">Ver Catálogo</button>
-    <p class="bem-vindo">Seja bem-vindo ao nosso cantinho que mais adoça vidas! Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você. Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!</p>
-    <div class="icones-rodape">
-      <div>
-        <img src="https://img.icons8.com/ios-filled/50/user.png" alt="Pessoa">
-        <p>Acesse seus pedidos com facilidade!</p>
+<body>
+  <script>
+    const dados = JSON.parse(localStorage.getItem('dadosUsuario') || sessionStorage.getItem('dadosUsuario'));
+    if (!dados) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div class="container">
+    <h1>Catálogo - Three Candy</h1>
+
+    <div class="produtos">
+      <div class="produto">
+        <h3>Bala Halls</h3>
+        <p>R$ 3,50</p>
+        <button onclick="remover(0)">-</button>
+        <span id="quantidade-0">0</span>
+        <button onclick="adicionar(0)">+</button><br/>
+        <button class="botao" onclick="abrirCarrinho()">Adicionar</button>
       </div>
-      <div>
-        <img src="https://img.icons8.com/ios-filled/50/order-history.png" alt="Pedido">
-        <p>Faça seu pedido e saboreie doces incríveis!</p>
+
+      <div class="produto">
+        <h3>Trident</h3>
+        <p>R$ 4,50</p>
+        <button onclick="remover(1)">-</button>
+        <span id="quantidade-1">0</span>
+        <button onclick="adicionar(1)">+</button><br/>
+        <button class="botao" onclick="abrirCarrinho()">Adicionar</button>
       </div>
-      <div>
-        <img src="https://img.icons8.com/ios-filled/50/cupcake.png" alt="Cupcake">
-        <p>Faça seu pedido e saboreie doces incríveis!</p>
+
+      <div class="produto">
+        <h3>Palha Italiana</h3>
+        <p>R$ 7,00</p>
+        <button onclick="remover(2)">-</button>
+        <span id="quantidade-2">0</span>
+        <button onclick="adicionar(2)">+</button><br/>
+        <button class="botao" onclick="abrirCarrinho()">Adicionar</button>
       </div>
     </div>
+
+    <!-- Ícone do carrinho -->
+    <div style="position: fixed; top: 20px; right: 20px;">
+      <button onclick="abrirCarrinho()">🛒 Carrinho</button>
+    </div>
   </div>
-</body>
-</html>
-<div id="carrinho-modal" class="modal">
+
+  <!-- Modal do carrinho -->
+  <div class="modal" id="carrinho-modal">
     <div class="modal-conteudo">
-      <h2>Seu Carrinho</h2>
+      <h3>Seu Carrinho</h3>
       <ul id="lista-carrinho"></ul>
-      <p id="total"></p>
-      <button onclick="finalizarPedido()" class="botao">Pagar via WhatsApp</button>
-      <button onclick="fecharCarrinho()" class="botao">Fechar</button>
+      <p id="total">Total: R$ 0,00</p>
+      <button onclick="finalizarPedido()">Pagar via WhatsApp</button>
+      <br/><br/>
+      <button onclick="fecharCarrinho()">Fechar</button>
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
