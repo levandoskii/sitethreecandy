@@ -1,187 +1,109 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #fdf6fb;
+  background-color: #fff0f6;
   color: #333;
 }
 
-/* --- LOGIN --- */
-.login-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(to right, #ffc8dd, #a2d2ff);
-}
-
-.login-container {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 90%;
-  max-width: 400px;
+h1, h2, h3 {
+  color: #ff69b4;
   text-align: center;
 }
 
-.login-container .title {
-  color: #ff5fa2;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.container {
+  padding: 2rem;
+  text-align: center;
 }
 
-.login-container input,
-.login-container select {
-  display: block;
-  width: 100%;
-  padding: 0.7rem;
-  margin: 0.5rem 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
-.checkbox-label input {
-  margin-right: 8px;
-}
-
-.botao {
-  background: #ff5fa2;
-  color: white;
-  border: none;
-  padding: 0.8rem;
+input, select {
+  padding: 10px;
+  border: 2px solid #ff69b4;
   border-radius: 10px;
-  margin-top: 1rem;
-  cursor: pointer;
+  margin: 10px;
+  width: 80%;
+  max-width: 400px;
   font-size: 1rem;
+}
+
+button, .botao {
+  background-color: #6ec1e4;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.botao:hover {
-  background: #ff87b4;
-}
-
-/* --- HOME --- */
-.home-body {
-  text-align: center;
-  padding: 2rem;
-  background: #fff0f6;
-}
-
-.logo {
-  max-width: 150px;
-  margin: 1rem auto;
-}
-
-.home-container .title {
-  font-size: 2.5rem;
-  color: #ff5fa2;
-}
-
-.slogan {
-  font-size: 1.2rem;
-  color: #5a189a;
-  margin: 0.5rem 0 1rem;
-}
-
-.bem-vindo {
-  margin: 2rem 0;
-  color: #333;
-  line-height: 1.6;
-}
-
-.icones-rodape {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 2rem;
-}
-
-.icones-rodape div {
-  text-align: center;
-  max-width: 100px;
-}
-
-.icones-rodape img {
-  width: 50px;
-  margin-bottom: 0.5rem;
-}
-
-/* --- CATALOGO --- */
-.catalogo-body {
-  padding: 2rem;
-  background: #e0f7ff;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+button:hover, .botao:hover {
+  background-color: #4aaed0;
 }
 
 .produtos {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 .produto {
-  background: #ffffff;
+  background: white;
+  border: 2px solid #ff69b4;
+  border-radius: 20px;
   padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   width: 250px;
-  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.quantidade {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 0.5rem 0;
-}
-
-.quantidade button {
-  background: #a2d2ff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 1.2rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.botao-carrinho {
-  background: #5a189a;
-  color: white;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
+.produto h3 {
+  color: #6ec1e4;
 }
 
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .modal-conteudo {
-  background: white;
+  background: #fff;
   padding: 2rem;
-  border-radius: 15px;
-  width: 90%;
+  border-radius: 20px;
   max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+#mensagem-bemvindo {
+  margin: 2rem auto;
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  background: #ffe4f0;
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+
+.icones {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
+}
+
+.icone-bloco {
+  text-align: center;
+}
+
+.icone-bloco img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
 }
